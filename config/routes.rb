@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get 'help' => 'static_pages#help'
+  resources :account_activations, only: [:edit]
 
   resources :users
+
 
 end
