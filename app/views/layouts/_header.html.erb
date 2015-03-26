@@ -1,12 +1,14 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
+<<<<<<< HEAD
     <%= link_to "Big Brother", root_path, id: "logo" %>
+=======
+    <%= link_to "BigBrother", root_path, id: "logo" %>
+>>>>>>> 1c780629c04a3abffaf8552812561386773c3ea1
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Help", help_path %></li>
+        <li><%= link_to "Sign up", '/signup' %></li>
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>
