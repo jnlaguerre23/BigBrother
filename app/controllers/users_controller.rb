@@ -33,16 +33,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-<<<<<<< HEAD
-      #UserMailer.account_activation(@user).deliver_now
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account"
       redirect_to root_url
-=======
-      log_in @user
-      flash[:success] = "Welcome! The first step is for you to read the manual below."
-      redirect_to @user
->>>>>>> 1c780629c04a3abffaf8552812561386773c3ea1
+      #log_in @user
+      #flash[:success] = "Welcome! The first step is for you to read the manual below."
+      #redirect_to @user
     else
       render 'new'
     end
