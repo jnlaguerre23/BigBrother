@@ -13,12 +13,12 @@ h1 {
 }
 
 h2 {
-  font-size: 1.5em;
   letter-spacing: -1px;
   margin: 30px;
   text-align: center;
   font-weight: normal;
   color: #777;
+  line-height: 45px;
 }
 
 p {
@@ -234,6 +234,22 @@ input {
   padding-bottom: 30px;
 }
 
-.btn-primary{
-  width: 280px;
+.btn-homepage{
+  width: 300px;
+}
+
+.jumbotron h2{
+  text-shadow: 1px 1px 5px black;
+}
+
+.navbar-inverse{
+  background-color: rgba(72, 100, 159, 1);
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+
+a.btn.btn-lg.btn-primary.btn-homepage {
+    color: white;
 }
