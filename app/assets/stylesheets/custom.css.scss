@@ -14,7 +14,7 @@ h1 {
 
 h2 {
   letter-spacing: -1px;
-  margin: 30px;
+  margin: 20px;
   text-align: center;
   font-weight: normal;
   color: #777;
@@ -60,13 +60,14 @@ textarea {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  padding-top: 9px;
+  margin-top: 15px;
   font-weight: bold;
 }
 
 #logo:hover {
   color: #fff;
   text-decoration: none;
+  background: none;
 }
 
 
@@ -82,11 +83,19 @@ footer a {
 }
 
 footer a:hover {
-  color: #222;
+  text-decoration: underline;
 }
 
 footer small {
   float: left;
+}
+
+.blue{
+  color: #012465;
+}
+
+.red{
+  color: #C60009;
 }
 
 footer ul {
@@ -207,7 +216,7 @@ input {
 
 .jumbotron{
   background: url('https://s3.amazonaws.com/uploads.hipchat.com/41262/882424/wgvKQ1DLzNYolQN/IMG_1536.jpg');
-  height:500px;
+  height:400px;
 }
 
 .icon{
@@ -234,6 +243,9 @@ input {
   padding-bottom: 30px;
 }
 
+#mentors_row{
+  border-top: none;
+}
 .btn-homepage{
   width: 300px;
 }
@@ -252,4 +264,24 @@ input {
 
 a.btn.btn-lg.btn-primary.btn-homepage {
     color: white;
+}
+
+#main_CTA_homepage{
+  background-color: #D28A08;
+  border-color: #D28A08;
+}
+
+@media(max-width: 500px){
+  h1{
+    font-size: 32px;
+  }
+
+  h2{
+    font-size: 18px;
+    line-height: 27px;
+  }
+
+  h4{
+    font-size: 12px;
+  }
 }
