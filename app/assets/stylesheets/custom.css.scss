@@ -57,12 +57,11 @@ textarea {
 
 #logo {
   float: left;
-  margin-right: 10px;
   font-size: 1.7em;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: -1px;
-  margin-top: 15px;
+  margin: 15px 0;
   font-weight: bold;
 }
 
@@ -221,8 +220,7 @@ input {
 }
 
 .jumbotron{
-  background: url('https://s3.amazonaws.com/uploads.hipchat.com/41262/882424/USwDZOhf335mj1s/IMG_1536%20copy.jpg');
-  //background: url('https://s3.amazonaws.com/uploads.hipchat.com/41262/882424/wgvKQ1DLzNYolQN/IMG_1536.jpg');
+  background: url('https://s3.amazonaws.com/mighty-thicket-2813/education_haiti_background_image.jpg');
   height:400px;
 }
 
@@ -260,10 +258,10 @@ input {
 .jumbotron h2{
   text-shadow: 1px 1px 2px black;
   color: #FFF;
+  margin: 30px;
 }
 
 .jumbotron h1{
-  color: #C60009;
   text-transform: uppercase;
 }
 .navbar-inverse{
@@ -276,11 +274,12 @@ input {
 
 a.btn.btn-lg.btn-primary.btn-homepage {
     color: white;
+    background-color: #D28A08;
+    border-color: #D28A08;
 }
 
-#main_CTA_homepage{
-  background-color: #D28A08;
-  border-color: #D28A08;
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  background-color:#48649f;
 }
 
 .btn-lg{
