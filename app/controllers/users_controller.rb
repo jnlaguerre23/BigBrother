@@ -25,6 +25,12 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+
+  end
+
+  def form
+    @user = User.find(params[:id])
+    redirect_to @user
   end
 
   # POST /users
