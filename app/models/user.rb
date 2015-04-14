@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
-  has_secure_password
-  validates :password, length: {minimum: 6}
+  # TODO(levon); conditional validations?
+  #has_secure_password
+  #validates :password, length: {minimum: 6}
   has_many :microposts, dependent: :destroy
 
     # Returns the hash digest of the given string.
@@ -69,12 +70,14 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.name
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+      user.email = auth.info.email
+      #binding.pry
       user.save!
     end
   end
