@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150415005734) do
 
-  create_table "forms", force: :cascade do |t|
-    t.text     "school"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "forms", ["user_id"], name: "index_forms_on_user_id"
 
   create_table "students", force: :cascade do |t|
     t.integer  "user_id"
@@ -45,7 +37,6 @@ ActiveRecord::Schema.define(version: 20150415005734) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
-    t.string   "school"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
