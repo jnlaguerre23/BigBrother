@@ -28,10 +28,6 @@ class UsersController < ApplicationController
 
   end
 
-  def form
-    @user = User.find(params[:id])
-    redirect_to @user
-  end
 
   # POST /users
   # POST /users.json
