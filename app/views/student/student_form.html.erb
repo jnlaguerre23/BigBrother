@@ -1,0 +1,16 @@
+<% provide(:title, "studentForm") %>
+<h1>Apply for mentor</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@student, url: form_path) do |f| %>
+
+      <%= f.label :School %>
+      <%= f.text_field :School, class: 'form-control' %>
+
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>  </div>
+
+    <% end %>
+
+</div>
