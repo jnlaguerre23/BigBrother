@@ -7,16 +7,17 @@ class StudentController < ApplicationController
   end
 
   def create
-    @student = User.find(params[:id])
+    @student=Student.new
+    @user = User.find(session[:user_id])
 
     if @student.save
       flash[:info] = "Successfully applied"
-      redirect_to @student
+      redirect_to users_url
 
     else
       render 'new'
     end
 
+end
 
-  
 end
