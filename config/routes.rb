@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     get    'help'    => 'static_pages#help'
     get    'about'   => 'static_pages#about'
     get    'form'    => 'student#new'
-  #  post   'form'    => 'student#create'
+    post   'form'    => 'student#create'
     get    'contact' => 'static_pages#contact'
     get    'signup'  => 'users#new'
     get    'login'   => 'sessions#new'
