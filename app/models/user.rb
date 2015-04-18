@@ -7,9 +7,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: {maximum: 255},
             format: {with: VALID_EMAIL_REGEX},
             uniqueness: {case_sensitive: false}
-  # TODO(levon); conditional validations?
-  #has_secure_password
-  #validates :password, length: {minimum: 6}
+  validates :password, length: {minimum: 6}, unless: :is_facebook?
   has_many :microposts, dependent: :destroy
 
     # Returns the hash digest of the given string.
@@ -69,6 +67,10 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
+  def is_facebook?
+    provider == 'facebook'
+  end
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -77,7 +79,6 @@ class User < ActiveRecord::Base
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.email = auth.info.email
-      #binding.pry
       user.save!
     end
   end
