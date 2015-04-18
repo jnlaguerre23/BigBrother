@@ -30,7 +30,14 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    p = user_params
+    if user_params[:password] != user_params[:password_confirmation]
+      flash[:warning] = "Passwords do not match"
+      redirect_to root_url
+      return
+    end
+    p.delete(:password_confirmation)
+    @user = User.new(p)
 
     if @user.save
       @user.send_activation_email
