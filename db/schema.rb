@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415005128) do
+ActiveRecord::Schema.define(version: 20150418164159) do
 
   create_table "students", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "school"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "phone"
+    t.integer  "grade"
+    t.integer  "gpa"
+    t.string   "nationality"
   end
 
   add_index "students", ["user_id"], name: "index_students_on_user_id"
@@ -26,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150415005128) do
     t.string   "name"
     t.string   "email"
     t.string   "password"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",             default: false
@@ -36,8 +40,14 @@ ActiveRecord::Schema.define(version: 20150415005128) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "provider",          default: "local"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
 end
