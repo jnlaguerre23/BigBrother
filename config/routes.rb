@@ -9,9 +9,15 @@ Rails.application.routes.draw do
     get    'login'   => 'sessions#new'
     post   'login'   => 'sessions#create'
     delete 'logout'  => 'sessions#destroy'
+    get '/registrations' => 'registrations#email'
+
     resources :users
     resources :account_activations, only: [:edit]
     resources :password_resets,     only: [:new, :create, :edit, :update]
+
+    get 'auth/:provider/callback' => 'sessions#create'
+    get 'auth/failure' => redirect('/')
+    get 'signout' => 'sessions#destroy', as: 'signout'
 
 
 #  get 'sessions/new'
