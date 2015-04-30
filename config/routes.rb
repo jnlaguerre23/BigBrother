@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     get    'about'   => 'static_pages#about'
     get    'form'    => 'student#new'
     post   'form'    => 'student#create'
+    get    'mentor'    => 'mentor#new'
+    post   'mentor'    => 'mentor#create'
     get    'contact' => 'static_pages#contact'
     get    'signup'  => 'users#new'
     get    'login'   => 'sessions#new'
