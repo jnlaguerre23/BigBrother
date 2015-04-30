@@ -1,0 +1,23 @@
+<% provide(:title, "Mentor") %>
+<h1>Apply for mentor</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@mentor, url: mentor_path) do |f| %>
+
+      <%= f.label :school %>
+      <%= f.text_field :school, class: 'form-control' %>
+
+      <%= f.label :major %>
+      <%= f.text_field :major, class: 'form-control' %>
+
+      
+      <%= f.label :graduation_year %>
+      <%= f.text_field :graduation_year, class: 'form-control' %>
+
+
+      <%= f.submit "Submit", class: "btn btn-primary" %>  </div>
+
+    <% end %>
+
+</div>
