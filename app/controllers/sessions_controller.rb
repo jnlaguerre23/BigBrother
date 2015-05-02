@@ -3,7 +3,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    logger.info(request.env['omniauth.auth'])
     user = User.from_omniauth(env["omniauth.auth"])
     if user
       session[:user_id] = user.id
