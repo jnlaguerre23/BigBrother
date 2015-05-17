@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428031431) do
+ActiveRecord::Schema.define(version: 20150517171335) do
+
+  create_table "MENTOR_STUDENT", primary_key: "MENTOR_ID", force: :cascade do |t|
+    t.integer "STUDENT_ID"
+  end
 
   create_table "mentors", force: :cascade do |t|
     t.string   "school"

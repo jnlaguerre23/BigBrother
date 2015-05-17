@@ -15,8 +15,8 @@ class MentorController < ApplicationController
     @mentor.graduation_year = params[:mentor][:graduation_year]
     if @mentor.save
       flash[:info] = "Successfully applied as a mentor"
-      redirect_to users_path
-      #redirect_to root_url
+      #redirect_to users_path
+      redirect_to root_url
     else
       render 'new'
     end

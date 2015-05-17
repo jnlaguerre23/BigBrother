@@ -1,5 +1,11 @@
 class StudentController < ApplicationController
 
+  before_action :logged_in_user, only: [:index]
+
+  def index
+    @student = Student.all
+  end
+
 
   def new
     @student=Student.new
