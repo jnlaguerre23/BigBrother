@@ -86,7 +86,9 @@ class User < ActiveRecord::Base
 private
 
   def downcase_email
-    self.email = email.downcase
+    if self.email.nil?
+      self.email = email.downcase
+    end
   end
 
   def create_activation_digest
