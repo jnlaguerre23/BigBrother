@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     p = user_params
     if user_params[:password] != user_params[:password_confirmation]
       flash[:warning] = "Passwords do not match"
-      redirect_to root_url
+      redirect_to(root_url)
       return
     end
     p.delete(:password_confirmation)
