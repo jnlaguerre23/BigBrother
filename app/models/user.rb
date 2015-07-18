@@ -1,13 +1,17 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
+
   before_save :downcase_email
   before_create :create_activation_digest
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :name, presence: true, length: {maximum: 50}
-  validates :email, presence: true, length: {maximum: 255},
-            format: {with: VALID_EMAIL_REGEX},
-            uniqueness: {case_sensitive: false}, unless: :is_facebook?
-  validates :password, length: {minimum: 6}, unless: :is_facebook?
+
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :email, presence: true, length: { maximum: 255 },
+            format: { with: VALID_EMAIL_REGEX },
+            uniqueness: { case_sensitive: false }, unless: :is_facebook?
+  validates :password, length: { minimum: 10 }, unless: :is_facebook?
+
   has_many :microposts, dependent: :destroy
 
     # Returns the hash digest of the given string.
