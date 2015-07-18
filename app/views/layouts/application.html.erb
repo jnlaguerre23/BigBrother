@@ -10,7 +10,9 @@
       <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
       </script>
     <![endif]-->
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
     <script>
       window.fbAsyncInit = function() {
         FB.init({
@@ -31,14 +33,20 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <% if @hero_template %>
+    <div class="hero hero-<%= @hero_template %>">
+      <%= render "heroes/#{@hero_template}" %>
+    </div>
+    <% end %>
+
     <div class="container">
       <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
-    <% end %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
       <%= render 'layouts/footer' %>
       <%= debug(params) if Rails.env.development? %>
-
     </div>
+
   </body>
 </html>

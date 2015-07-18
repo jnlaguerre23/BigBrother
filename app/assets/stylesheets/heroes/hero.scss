@@ -1,0 +1,16 @@
+.hero {
+  height: calc(100% + 9px);
+  width: 100%;
+
+  background-size: cover;
+  background-position: 50% 0;
+  padding: 50px 20px;
+  text-align: center;
+  color: #fff;
+
+  margin-top: -9px;
+
+  * {
+    color: #fff;
+  }
+}

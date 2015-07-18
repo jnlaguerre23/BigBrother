@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+html, body {
+  height: 100%;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -214,11 +218,6 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
-}
-
-.jumbotron{
-  background: url('https://s3.amazonaws.com/mighty-thicket-2813/education_haiti_background_image.jpg');
-  height:400px;
 }
 
 .icon{
