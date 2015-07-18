@@ -1,18 +1,15 @@
 class MentorController < ApplicationController
 
-
   def new
-      @mentor=Mentor.new
+      @mentor = Mentor.new
   end
 
   def create
-    @mentor=Mentor.new
-    @user = User.find(session[:user_id])
-    @mentor.user=@user
-    @mentor.email=@mentor.user.email
-    @mentor.school= params[:mentor][:school]
-    @mentor.major = params[:mentor][:major]
-    @mentor.graduation_year = params[:mentor][:graduation_year]
+    mentor_params = params[:mentor].slice(:school, :major, :graduation_year)
+                                   .merge(user: current_user, email: current_user.email)
+
+    @mentor = Mentor.new(mentor_params)
+
     if @mentor.save
       flash[:info] = "Successfully applied as a mentor"
       redirect_to users_path
