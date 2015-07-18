@@ -87,13 +87,11 @@ class User < ActiveRecord::Base
     end
   end
 
-private
+  private
 
   def downcase_email
-    if self.email !=nil
+    if self.email
       self.email = self.email.downcase
-    else
-      
     end
   end
 
