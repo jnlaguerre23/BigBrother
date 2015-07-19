@@ -1,6 +1,6 @@
 == README
 
-Application URL: https://mighty-thicket-2813.herokuapp.com/
+Application URL: https://www.educationhaiti.com/
 
 This web application enables high school students applying for college to connect with mentors who can help navigate the process.
 
