@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       user = User.find_by(email: params[:session][:email].downcase)
+      binding.pry
       if user && user.authenticate(params[:session][:password])
         session[:user_id] = user.id
         if user.activated?
