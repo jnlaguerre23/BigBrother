@@ -40,10 +40,6 @@ class User < ActiveRecord::Base
     update_attribute(:activated_at, Time.zone.now)
   end
 
-  def feed
-    Micropost.where('user_id = ?', id)
-  end
-
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
   end
@@ -78,6 +74,10 @@ class User < ActiveRecord::Base
 
   def facebook?
     provider == 'facebook'
+  end
+
+  def authenticate(password)
+    return self.password == password
   end
 
   def self.from_omniauth(auth)
