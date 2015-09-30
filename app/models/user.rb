@@ -7,17 +7,22 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   validates :name, presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 255 },
-            format: { with: VALID_EMAIL_REGEX },
-            uniqueness: { case_sensitive: false }, unless: :is_facebook?
-  validates :password, length: { minimum: 10 }, unless: :is_facebook?
+  validates :email, presence: true,
+                    length: { maximum: 255 },
+                    format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }, unless: :facebook?
+  validates :password, length: { minimum: 10 }, unless: :facebook?
 
   has_many :microposts, dependent: :destroy
 
   # Returns the hash digest of the given string.
   def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = ''
+    if ActiveModel::SecurePassword.min_cost
+      cost = BCrypt::Engine::MIN_COST
+    else
+      cost = BCrypt::Engine.cost
+    end
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -36,7 +41,7 @@ class User < ActiveRecord::Base
   end
 
   def feed
-    Micropost.where("user_id = ?", id)
+    Micropost.where('user_id = ?', id)
   end
 
   def send_activation_email
@@ -71,7 +76,7 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self).deliver_now
   end
 
-  def is_facebook?
+  def facebook?
     provider == 'facebook'
   end
 
@@ -91,9 +96,7 @@ class User < ActiveRecord::Base
   private
 
   def downcase_email
-    if self.email
-      self.email = self.email.downcase
-    end
+    @email = @email.downcase if @email
   end
 
   def create_activation_digest

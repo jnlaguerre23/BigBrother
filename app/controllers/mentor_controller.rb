@@ -1,7 +1,6 @@
 class MentorController < ApplicationController
-
   def new
-      @mentor = Mentor.new
+    @mentor = Mentor.new
   end
 
   def create
@@ -11,9 +10,8 @@ class MentorController < ApplicationController
     @mentor = Mentor.new(mentor_params)
 
     if @mentor.save
-      flash[:info] = "Successfully applied as a mentor"
+      flash[:info] = 'Successfully applied as a mentor'
       redirect_to users_path
-      #redirect_to root_url
     else
       render 'new'
     end

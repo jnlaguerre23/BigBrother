@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-#ruby   '2.1.1' -- my ruby is 2.0.0
+# ruby   '2.1.1' -- my ruby is 2.0.0
 
 gem 'rails',                '4.2.0'
 gem 'faker',                '1.4.2'
@@ -19,6 +19,7 @@ gem 'bootstrap-will_paginate', '0.0.10'
 gem 'pry-byebug'
 gem 'i18n', '~> 0.7.0'
 gem 'omniauth-facebook'
+gem 'rubocop', require: false
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
@@ -39,5 +40,4 @@ group :production do
   gem 'unicorn',        '4.8.3'
   gem 'actionmailer', '4.2.0'
   gem 'mail'
-
 end
