@@ -1,6 +1,4 @@
 class StudentController < ApplicationController
-
-
   def new
     @student = Student.new
   end
@@ -12,7 +10,7 @@ class StudentController < ApplicationController
     @student = Student.new(student_params)
 
     if @student.save
-      flash[:info] = "Successfully applied"
+      flash[:info] = 'Successfully applied'
       redirect_to root_url
     else
       render 'new'

@@ -14,7 +14,6 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
-    #@microposts = @user.microposts.paginate(page: params[:page])
   end
 
   # GET /users/new
@@ -36,21 +35,17 @@ class UsersController < ApplicationController
   def create
     p = user_params
     if user_params[:password] != user_params[:password_confirmation]
-      flash[:warning] = "Passwords do not match"
+      flash[:warning] = 'Passwords do not match'
       redirect_to(root_url)
       return
     end
     p.delete(:password_confirmation)
-    #binding.pry
     @user = User.new(p)
 
     if @user.save
       @user.send_activation_email
-      flash[:info] = "Please check your email to activate your account"
+      flash[:info] = 'Please check your email to activate your account'
       redirect_to root_url
-      #log_in @user
-      #flash[:success] = "Welcome! The first step is for you to read the manual below."
-      #redirect_to @user
     else
       render 'new'
     end
@@ -59,9 +54,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
+    respond_to do
       if @user.update(user_params)
-        flash[:success] = "Profil mis a jour"
+        flash[:success] = 'Profil mis a jour'
         redicted_to @user
       else
         render 'edit'
@@ -73,30 +68,33 @@ class UsersController < ApplicationController
   # DELETE /users/1.json
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User deleted"
+    flash[:success] = 'User deleted'
     redirect_to users_url
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def correct_user
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  # Never trust parameters from the scary internet,
+  # only allow the white list through.
+  def user_params
+    params.require(:user).permit(
+      :name, :email, :password, :password_confirmation)
+  end
 
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def correct_user
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def send_activation
-      UserMailer.account_activation(@user).deliver_now
-    end
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
+
+  def send_activation
+    UserMailer.account_activation(@user).deliver_now
+  end
 end

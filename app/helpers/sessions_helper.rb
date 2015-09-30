@@ -3,7 +3,6 @@ module SessionsHelper
     session[:user_id] = user.id
   end
 
-
   # Remembers a user in a persistent session.
   def remember(user)
     user.remember
@@ -58,11 +57,10 @@ module SessionsHelper
 
   # Confirms a logged-in user.
   def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
+    return if logged_in?
+    store_location
+    flash[:danger] = 'Please log in.'
+    redirect_to login_url
   end
 
   # Confirms the correct user.
