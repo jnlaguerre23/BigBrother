@@ -41,6 +41,7 @@ class UsersController < ApplicationController
       return
     end
     p.delete(:password_confirmation)
+    #binding.pry
     @user = User.new(p)
 
     if @user.save
